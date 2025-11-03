@@ -53,5 +53,5 @@ Sistema web para gestión académica desarrollado con Jakarta EE.
 ## 👤 Autor
 
 **Marcela Mancini**  
-GitHub: [@ManciniMarcela22](https://github.com/ManciniMarcela22)  
+GitHub: [@ManciniMarcela22](https://github.com/marcem22)  
 Noviembre 2025
