@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets">
+    
+    <ui:composition template="/template.xhtml">
+        
+        <ui:define name="title">
+            Consultas JPQL - Sistema Académico
+        </ui:define>
+        
+        <ui:define name="body">
+            <h:form>
+                <!-- Panel Principal -->
+                <p:panel header="📊 Consultas JPQL - Ejercicio 6">
+                    <p:messages id="messages" showDetail="true" closable="true"/>
+                    
+                    <p style="color: #666; margin-bottom: 20px;">
+                        <strong>ℹ️ Acerca de este ejercicio:</strong><br/>
+                        Implementación de consultas JPQL sobre el modelo de datos del sistema académico.
+                        Las siguientes consultas utilizan Jakarta Persistence Query Language (JPQL) 
+                        para obtener información específica de la base de datos.
+                    </p>
+                    
+                    <!-- Consulta 1: Exámenes de Julio -->
+                    <p:panel header="📋 Consulta 1: Exámenes del Turno de Julio 2025" 
+                             style="margin-bottom: 20px;"
+                             toggleable="true">
+                        <p style="color: #666; margin-bottom: 15px;">
+                            Lista las mesas de examen del turno de julio, mostrando datos del alumno y nota obtenida.
+                        </p>
+                        <p:commandButton 
+                            value="Ejecutar Consulta" 
+                            icon="pi pi-play"
+                            styleClass="ui-button-success"
+                            onclick="window.location.href='#{request.contextPath}/ExamenesJulio'; return false;"/>
+                    </p:panel>
+                    
+                    <!-- Consulta 2: Alumnos sin exámenes -->
+                    <p:panel header="⚠️ Consulta 2: Alumnos sin Exámenes en 2025" 
+                             style="margin-bottom: 20px;"
+                             toggleable="true">
+                        <p style="color: #666; margin-bottom: 15px;">
+                            Obtiene un listado de alumnos que no han rendido ninguna materia durante el año en curso.
+                        </p>
+                        <p:commandButton 
+                            value="Ejecutar Consulta" 
+                            icon="pi pi-play"
+                            styleClass="ui-button-warning"
+                            onclick="window.location.href='#{request.contextPath}/AlumnosSinExamen'; return false;"/>
+                    </p:panel>
+                    
+                    <!-- Consulta 3: Docentes con más de 2 materias -->
+                    <p:panel header="👨‍🏫 Consulta 3: Docentes que Dictan Más de 2 Materias" 
+                             style="margin-bottom: 20px;"
+                             toggleable="true">
+                        <p style="color: #666; margin-bottom: 15px;">
+                            Muestra los nombres de los docentes con alta carga horaria (más de 2 materias asignadas).
+                        </p>
+                        <p:commandButton 
+                            value="Ejecutar Consulta" 
+                            icon="pi pi-play"
+                            styleClass="ui-button-help"
+                            onclick="window.location.href='#{request.contextPath}/DocentesVariasMaterias'; return false;"/>
+                    </p:panel>
+                    
+                    <!-- Información técnica -->
+                    <p:panel header="💡 Tecnologías Utilizadas" 
+                             style="margin-top: 20px;"
+                             toggleable="true"
+                             collapsed="true">
+                        <ul style="color: #666;">
+                            <li>Jakarta Persistence API (JPA)</li>
+                            <li>JPQL (Jakarta Persistence Query Language)</li>
+                            <li>Jakarta Servlets</li>
+                            <li>JSP (JavaServer Pages)</li>
+                            <li>JSTL (JSP Standard Tag Library)</li>
+                            <li>PrimeFaces</li>
+                        </ul>
+                    </p:panel>
+                    
+                    <!-- Botón volver -->
+                    <p:commandButton 
+                        value="← Volver al Inicio" 
+                        icon="pi pi-home"
+                        styleClass="ui-button-secondary"
+                        style="margin-top: 20px;"
+                        onclick="window.location.href='#{request.contextPath}/faces/index.xhtml'; return false;"/>
+                        
+                </p:panel>
+            </h:form>
+        </ui:define>
+        
+    </ui:composition>
+</html>

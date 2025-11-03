@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlumnoViewDlg" widgetVar="AlumnoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAlumnoTitle}">
+            <h:form id="AlumnoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{alumnoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAlumnoLabel_idalumno}"/>
+                        <h:outputText value="#{alumnoController.selected.idalumno}" title="#{bundle.ViewAlumnoTitle_idalumno}"/>
+                        <h:outputText value="#{bundle.ViewAlumnoLabel_nombre}"/>
+                        <h:outputText value="#{alumnoController.selected.nombre}" title="#{bundle.ViewAlumnoTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewAlumnoLabel_apellido}"/>
+                        <h:outputText value="#{alumnoController.selected.apellido}" title="#{bundle.ViewAlumnoTitle_apellido}"/>
+                        <h:outputText value="#{bundle.ViewAlumnoLabel_dni}"/>
+                        <h:outputText value="#{alumnoController.selected.dni}" title="#{bundle.ViewAlumnoTitle_dni}"/>
+                        <h:outputText value="#{bundle.ViewAlumnoLabel_carreraIdcarrera}"/>
+                        <h:outputText value="#{alumnoController.selected.carreraIdcarrera}" title="#{bundle.ViewAlumnoTitle_carreraIdcarrera}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('AlumnoViewDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

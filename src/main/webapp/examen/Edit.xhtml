@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExamenEditDlg" widgetVar="ExamenEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditExamenTitle}">
+            <h:form id="ExamenEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{examenController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditExamenLabel_examenPK_fecha}" for="examenPK_fecha" />
+                        <p:calendar id="examenPK_fecha" pattern="MM/dd/yyyy HH:mm:ss" value="#{examenController.selected.examenPK.fecha}" title="#{bundle.EditExamenTitle_examenPK_fecha}" required="true" requiredMessage="#{bundle.EditExamenRequiredMessage_examenPK_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditExamenLabel_nota}" for="nota" />
+                        <p:inputText id="nota" value="#{examenController.selected.nota}" title="#{bundle.EditExamenTitle_nota}" />
+                        <p:outputLabel value="#{bundle.EditExamenLabel_alumno}" for="alumno" />
+                        <p:selectOneMenu id="alumno" value="#{examenController.selected.alumno}" required="true" requiredMessage="#{bundle.EditExamenRequiredMessage_alumno}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{alumnoController.itemsAvailableSelectOne}"
+                                           var="alumnoItem"
+                                           itemValue="#{alumnoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditExamenLabel_materia}" for="materia" />
+                        <p:selectOneMenu id="materia" value="#{examenController.selected.materia}" required="true" requiredMessage="#{bundle.EditExamenRequiredMessage_materia}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{materiaController.itemsAvailableSelectOne}"
+                                           var="materiaItem"
+                                           itemValue="#{materiaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{examenController.update}" value="#{bundle.Save}" update="display,:ExamenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ExamenEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ExamenEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+
+        <!-- ✅ RECURSOS PROPIOS - CON LIBRARY -->
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputScript name="js/jsfcrud.js"/>
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            .layout-wrapper {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            .layout-header {
+                background-color: #f4f4f4;
+                border-bottom: 2px solid #ddd;
+                padding: 10px 20px;
+            }
+
+            .layout-header h1 {
+                margin: 0;
+                padding: 0;
+                font-size: 1.5em;
+                color: #333;
+            }
+
+            .layout-content {
+                flex: 1;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .layout-footer {
+                background-color: #f4f4f4;
+                border-top: 2px solid #ddd;
+                padding: 15px 20px;
+                text-align: center;
+                color: #666;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <p:growl id="growl" life="3000" />
+
+        <div class="layout-wrapper">
+            <!-- HEADER -->
+            <div class="layout-header">
+                <h1>#{bundle.AppName}</h1>
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="pi pi-home"/>
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Alumno" outcome="/alumno/List.xhtml" />
+                            <p:menuitem value="Carrera" outcome="/carrera/List.xhtml" />
+                            <p:menuitem value="Examen" outcome="/examen/List.xhtml" />
+                            <p:menuitem value="Facultad" outcome="/facultad/List.xhtml" />
+                            <p:menuitem value="Materia" outcome="/materia/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </div>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <div class="layout-content">
+                <ui:insert name="body"/>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="layout-footer">
+                <ui:insert name="footer">
+                    <p>© 2025 Sistema de Gestión de Alumnos</p>
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+
+</html>

@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:c="jakarta.tags.core"
+      xmlns:f="jakarta.faces.core">
+    
+    <ui:composition template="/template.xhtml">
+        
+        <ui:define name="title">
+            Sistema de Gestión Académica
+        </ui:define>
+        
+        <ui:define name="body">
+            <h:form>
+                <!-- Panel Principal -->
+                <p:panel header="🎓 Sistema de Gestión Académica" style="margin-bottom: 20px;">
+                    <p style="color: #666; margin-bottom: 20px;">
+                        Bienvenido al sistema de administración del sistema académico. 
+                        Seleccioná una opción del menú para comenzar.
+                    </p>
+                    
+                    <!-- Grid con 2 columnas -->
+                    <p:panelGrid columns="2" layout="grid" 
+                                 styleClass="ui-panelgrid-blank" 
+                                 style="width: 100%;">
+                        
+                        <!-- COLUMNA IZQUIERDA: Gestión de Entidades -->
+                        <p:panel header="📚 Gestión de Entidades" style="height: 100%;">
+                            <h:panelGrid columns="1" style="width: 100%;">
+                                <p:commandButton 
+                                    value="👨‍🎓 Gestionar Alumnos" 
+                                    icon="pi pi-users"
+                                    styleClass="ui-button-success"
+                                    style="width: 100%; margin-bottom: 10px;"
+                                    onclick="window.location.href='#{request.contextPath}/faces/alumno/List.xhtml'; return false;"/>
+                                
+                                <p:commandButton 
+                                    value="🎓 Gestionar Carreras" 
+                                    icon="pi pi-book"
+                                    styleClass="ui-button-info"
+                                    style="width: 100%; margin-bottom: 10px;"
+                                    onclick="window.location.href='#{request.contextPath}/faces/carrera/List.xhtml'; return false;"/>
+                                
+                                <p:commandButton 
+                                    value="📖 Gestionar Materias" 
+                                    icon="pi pi-list"
+                                    styleClass="ui-button-warning"
+                                    style="width: 100%; margin-bottom: 10px;"
+                                    onclick="window.location.href='#{request.contextPath}/faces/materia/List.xhtml'; return false;"/>
+                                
+                                <p:commandButton 
+                                    value="📝 Gestionar Exámenes" 
+                                    icon="pi pi-file-edit"
+                                    styleClass="ui-button-help"
+                                    style="width: 100%;"
+                                    onclick="window.location.href='#{request.contextPath}/faces/examen/List.xhtml'; return false;"/>
+                            </h:panelGrid>
+                        </p:panel>
+                        
+                        <!-- COLUMNA DERECHA: Facultades y Consultas -->
+                        <p:panel header="🏛️ Facultades" style="height: 100%;">
+                            <p:dataList value="#{applicationScope.facultades}" 
+                                       var="facu" 
+                                       type="none"
+                                       style="list-style: none;">
+                                <p:commandButton 
+                                    value="#{facu.nombre}" 
+                                    icon="pi pi-building"
+                                    styleClass="ui-button-secondary"
+                                    style="width: 100%; margin-bottom: 8px; text-align: left;"
+                                    onclick="window.location.href='#{request.contextPath}/Facultad?codigoFacu=#{facu.idfacultad}'; return false;"/>
+                            </p:dataList>
+                        </p:panel>
+                        
+                    </p:panelGrid>
+                    
+                    <!-- Panel de Consultas JPQL (ancho completo) -->
+                    <p:panel header="📊 Ejercicio 6 - Consultas JPQL" 
+                             style="margin-top: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
+                             styleClass="custom-panel">
+                        <p style="color: white; margin-bottom: 15px;">
+                            Accedé a las consultas implementadas usando JPQL sobre el sistema académico.
+                        </p>
+                        <p:commandButton 
+                            value="Ver Consultas JPQL →" 
+                            icon="pi pi-chart-bar"
+                            styleClass="ui-button-raised"
+                            style="background-color: white; color: #764ba2; font-weight: bold; border: none;"
+                            onclick="window.location.href='#{request.contextPath}/faces/consultasJPQL.xhtml'; return false;"/>
+                    </p:panel>
+                    
+                </p:panel>
+                
+                <!-- Panel de Información -->
+                <p:panel header="ℹ️ Información del Sistema" style="margin-top: 20px;">
+                    <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank">
+                        <h:outputText value="👤 Usuario:" style="font-weight: bold;"/>
+                        <h:outputText value="ManciniMarcela22"/>
+                        
+                        <h:outputText value="📅 Fecha:" style="font-weight: bold;"/>
+                        <h:outputText value="03/11/2025"/>
+                        
+                        <h:outputText value="🔧 Tecnologías:" style="font-weight: bold;"/>
+                        <h:outputText value="Jakarta EE, JPA, PrimeFaces, MySQL"/>
+                    </p:panelGrid>
+                </p:panel>
+            </h:form>
+            
+            <style>
+                .custom-panel .ui-panel-content {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                }
+                .custom-panel .ui-panel-title {
+                    color: white;
+                }
+            </style>
+        </ui:define>
+        
+    </ui:composition>
+</html>

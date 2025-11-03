@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+  <persistence-unit name="my_persistence_unit" transaction-type="JTA">
+    <jta-data-source>jdbc/bdalumnos</jta-data-source>
+    <class>conexion.entidadesss.Materia</class>
+    <class>conexion.entidadesss.Facultad</class>
+    <class>conexion.entidadesss.Alumno</class>
+    <class>conexion.entidadesss.Carrera</class>
+    <class>conexion.entidadesss.Examen</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <!-- Logging general -->
+      <property name="eclipselink.logging.level" value="FINE"/>
+      <!-- Logging SQL detallado -->
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <!-- (opcional) permite SQL nativo -->
+      <property name="eclipselink.jdbc.allow-native-sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
